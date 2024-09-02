@@ -1,7 +1,11 @@
 ﻿using System;
+using System.IO;
+using testUwp.Core;
+using testUwp.Repository;
 using testUwp.View;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -21,6 +25,8 @@ namespace testUwp
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+            ServiceLocator.Instance.Register<ITransactionRepository>(new TransactionRepository(Path.Combine(ApplicationData.Current.LocalFolder.Path, "mydb.db")));
         }
 
         /// <summary>
