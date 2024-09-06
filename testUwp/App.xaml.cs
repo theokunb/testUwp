@@ -27,6 +27,8 @@ namespace testUwp
             this.Suspending += OnSuspending;
 
             ServiceLocator.Instance.Register<ITransactionRepository>(new TransactionRepository(Path.Combine(ApplicationData.Current.LocalFolder.Path, "mydb.db")));
+            ServiceLocator.Instance.Register<ICurrencyRepository>(new CurrencyRepository(Path.Combine(ApplicationData.Current.LocalFolder.Path, "mydb.db")));
+
         }
 
         /// <summary>
