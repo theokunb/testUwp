@@ -11,8 +11,56 @@
     <Page.DataContext>
         <vm:TransactionViewModel/>
     </Page.DataContext>
-    <StackPanel>
-        <Button Content="back"
-                Command="{Binding NavigateBack}"/>
-    </StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0"
+                   Text="Операции"
+                   Style="{StaticResource PageTitle}"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="Сумма операции"/>
+                <TextBox Text="1000"/>
+                <TextBlock Text="Тип операции"/>
+                <ComboBox SelectedIndex="0">
+                    <ComboBoxItem Content="Зачисление"/>
+                    <ComboBoxItem Content="Снятие"/>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="Валюта"/>
+                <ComboBox SelectedIndex="0">
+                    <ComboBoxItem Content="USD"/>
+                    <ComboBoxItem Content="RUS"/>
+                    <ComboBoxItem Content="EUR"/>
+                </ComboBox>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                    Margin="40,0"
+                    Content="Записать"/>
+            <Button Grid.Column="1"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                    Margin="40,0"
+                    Content="Отмена"
+                    Command="{Binding NavigateBack}"/>
+        </Grid>
+    </Grid>
 </Page>

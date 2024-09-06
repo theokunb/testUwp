@@ -8,11 +8,13 @@ namespace testUwp.ViewModel
     public class AccountViewModel : BaseViewModel
     {
         private readonly ITransactionRepository _transactionRepository;
+        private readonly ICurrencyRepository _currencyRepository;
 
         public AccountViewModel()
         {
             Balance = 12722.58f;
             _transactionRepository = ServiceLocator.Instance.Get<ITransactionRepository>();
+            _currencyRepository = ServiceLocator.Instance.Get<ICurrencyRepository>();
 
             NavigateTransaction = new RelayCommand((param) => OnNavigateTransaction(param));
             NavigateHistory = new RelayCommand(param => OnNavigateHistory(param));
