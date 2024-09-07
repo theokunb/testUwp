@@ -43,6 +43,9 @@ namespace testUwp.Repository
             return await _connection.Table<Currency>().Where(element => element.Type == currencyType).FirstOrDefaultAsync();
         }
 
+        public async Task<Currency> GetByCodeAsync(string currencyCode, CancellationToken cancellationToken = default) =>
+            await _connection.Table<Currency>().FirstOrDefaultAsync(element => element.Title == currencyCode);
+
         public async Task<IEnumerable<Currency>> GetListAsync(CancellationToken cancellationToken = default)
         {
             return await _connection.Table<Currency>().ToListAsync();

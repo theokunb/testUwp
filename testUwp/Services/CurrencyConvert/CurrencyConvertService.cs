@@ -15,7 +15,7 @@ namespace testUwp.Services.CurrencyConvert
             _quoteService = ServiceLocator.Instance.Get<IQuoteService>();
         }
 
-        public async Task<double> ConvertToAsync(double amount, string currencyCode, CancellationToken cancellationToken = default)
+        public async Task<double> ConvertFromRubAsync(double amount, string currencyCode, CancellationToken cancellationToken = default)
         {
             var quote = await _quoteService.GetCurrentQuoteAsync();
             ValuteValue valuteValue = null;
@@ -39,6 +39,32 @@ namespace testUwp.Services.CurrencyConvert
             }
 
             return valuteValue != null ? amount / valuteValue.Value : amount;
+        }
+
+        public async Task<double> ConvertToRubAsync(double amount, string currencyCode, CancellationToken cancellationToken = default)
+        {
+            var quote = await _quoteService.GetCurrentQuoteAsync();
+            ValuteValue valuteValue = null;
+
+            switch (currencyCode)
+            {
+                case "USD":
+                    {
+                        valuteValue = quote.Valute.USD;
+                        break;
+                    }
+                case "EUR":
+                    {
+                        valuteValue = quote.Valute.EUR;
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
+            return valuteValue != null ? amount * valuteValue.Value : amount;
         }
     }
 }

@@ -6,6 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:testUwp.ViewModel"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.DataContext>
@@ -28,20 +30,26 @@
 
             <StackPanel Grid.Column="0">
                 <TextBlock Text="Сумма операции"/>
-                <TextBox Text="1000"/>
+                <TextBox Text="{Binding OperationValueStr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Name="operationValue"
+                         SelectionStart="{Binding SelectionText}"
+                         SelectionLength="{Binding SelectionLenght}">
+                    <i:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="PreviewKeyUp">
+                            <core:InvokeCommandAction Command="{Binding CommandOperationValueChanged}"/>
+                        </core:EventTriggerBehavior>
+                    </i:Interaction.Behaviors>
+                </TextBox>
                 <TextBlock Text="Тип операции"/>
-                <ComboBox SelectedIndex="0">
-                    <ComboBoxItem Content="Зачисление"/>
-                    <ComboBoxItem Content="Снятие"/>
+                <ComboBox ItemsSource="{Binding Operations}"
+                          SelectedIndex="{Binding SelectedOperationType, Mode=TwoWay}">
                 </ComboBox>
             </StackPanel>
 
             <StackPanel Grid.Column="1">
                 <TextBlock Text="Валюта"/>
-                <ComboBox SelectedIndex="0">
-                    <ComboBoxItem Content="USD"/>
-                    <ComboBoxItem Content="RUS"/>
-                    <ComboBoxItem Content="EUR"/>
+                <ComboBox SelectedIndex="{Binding SelectedCurrencyIndex, Mode=TwoWay}"
+                          ItemsSource="{Binding Currencies, Mode=TwoWay}">
                 </ComboBox>
             </StackPanel>
         </Grid>
@@ -54,13 +62,15 @@
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Margin="40,0"
-                    Content="Записать"/>
+                    Content="Записать"
+                    Command="{Binding CommandWriteOperation}"
+                    IsEnabled="{Binding WriteButtonActive}"/>
             <Button Grid.Column="1"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Margin="40,0"
                     Content="Отмена"
-                    Command="{Binding NavigateBack}"/>
+                    Command="{Binding CommandNavigateBack}"/>
         </Grid>
     </Grid>
 </Page>
