@@ -9,5 +9,6 @@ namespace testUwp.Repository
     {
         Task<int> CreateAsync(CurrencyType currencyType, CancellationToken cancellationToken = default);
         Task<Account> GetAsync(int accountId, CancellationToken cancellationToken = default);
+        Task<int> UpdateAsync(Account account, CancellationToken cancellationToken = default);
     }
 }

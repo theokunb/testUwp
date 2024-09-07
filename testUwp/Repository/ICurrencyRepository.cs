@@ -10,7 +10,9 @@ namespace testUwp.Repository
     {
         Task<int> CreateAsync(CurrencyType currencyType, string title, CancellationToken cancellationToken = default);
         Task<Currency> GetAsync(CurrencyType currencyType, CancellationToken cancellationToken = default);
+        Task<Currency> GetByCodeAsync(string currencyCode, CancellationToken cancellationToken = default);
         Task<int> RemoveAsync(CurrencyType currencyType, CancellationToken cancellationToken = default);
         Task<IEnumerable<Currency>> GetListAsync(CancellationToken cancellationToken = default);
+
     }
 }

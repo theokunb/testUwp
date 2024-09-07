@@ -127,6 +127,7 @@
     </Compile>
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\Currency.cs" />
+    <Compile Include="Model\OperationType.cs" />
     <Compile Include="Model\Quote.cs" />
     <Compile Include="Model\Transaction.cs" />
     <Compile Include="Model\TransactionType.cs" />
@@ -137,9 +138,14 @@
     <Compile Include="Repository\ICurrencyRepository.cs" />
     <Compile Include="Repository\ITransactionRepository.cs" />
     <Compile Include="Repository\TransactionRepository.cs" />
+    <Compile Include="Services\Account\AccountService.cs" />
+    <Compile Include="Services\Account\IAccountService.cs" />
     <Compile Include="Services\CurrencyConvert\CurrencyConvertService.cs" />
     <Compile Include="Services\CurrencyConvert\ICurrencyConvertService.cs" />
+    <Compile Include="Services\Help\DigitHelper.cs" />
     <Compile Include="Services\IService.cs" />
+    <Compile Include="Services\Operations\IOperationService.cs" />
+    <Compile Include="Services\Operations\OperationService.cs" />
     <Compile Include="Services\Quotes\IQuoteService.cs" />
     <Compile Include="Services\Quotes\QuotesService.cs" />
     <Compile Include="ViewModel\AccountViewModel.cs" />

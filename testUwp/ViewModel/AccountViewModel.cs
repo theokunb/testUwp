@@ -28,26 +28,10 @@ namespace testUwp.ViewModel
             Init();
         }
 
-        private async void Init()
-        {
-            var account = await _accountRepository.GetAsync(1);
-            var currencies = await _currencyRepository.GetListAsync();
-
-            foreach (var currency in currencies)
-            {
-                Currencies.Add(currency.Title);
-            }
-
-            Balance = account.Amount;
-            var accountCurrency = currencies.Where(element => element.Type == account.Currency).FirstOrDefault();
-            SelectedCurrencyIndex = accountCurrency.Id - 1;
-        }
-
         private double _balance;
         private int _selectedCurrencyIndex;
 
         public string DisplayBalance => _balance.ToString("n2");
-
         public double Balance
         {
             get => _balance;
@@ -83,11 +67,26 @@ namespace testUwp.ViewModel
             Frame.Navigate(typeof(HistoryView));
         }
 
+        private async void Init()
+        {
+            var account = await _accountRepository.GetAsync(1);
+            var currencies = await _currencyRepository.GetListAsync();
+
+            foreach (var currency in currencies)
+            {
+                Currencies.Add(currency.Title);
+            }
+
+            Balance = account.Amount;
+            var accountCurrency = currencies.Where(element => element.Type == account.Currency).FirstOrDefault();
+            SelectedCurrencyIndex = accountCurrency.Id - 1;
+        }
+
         private async void OnCurrencyChanged(object param)
         {
             var account = await _accountRepository.GetAsync(1);
 
-            Balance = await _currencyConvertService.ConvertToAsync(account.Amount, Currencies[SelectedCurrencyIndex]);
+            Balance = await _currencyConvertService.ConvertFromRubAsync(account.Amount, Currencies[SelectedCurrencyIndex]);
         }
     }
 }

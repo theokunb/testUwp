@@ -2,7 +2,9 @@
 using System.IO;
 using testUwp.Core;
 using testUwp.Repository;
+using testUwp.Services.Account;
 using testUwp.Services.CurrencyConvert;
+using testUwp.Services.Operations;
 using testUwp.Services.Quotes;
 using testUwp.View;
 using Windows.ApplicationModel;
@@ -33,6 +35,8 @@ namespace testUwp
             ServiceLocator.Instance.Register<IAccountRepository>(new AccountRepository(Path.Combine(ApplicationData.Current.LocalFolder.Path, "mydb.db")));
             ServiceLocator.Instance.Register<IQuoteService>(new QuotesService());
             ServiceLocator.Instance.Register<ICurrencyConvertService>(new CurrencyConvertService());
+            ServiceLocator.Instance.Register<IOperationService>(new OperationService());
+            ServiceLocator.Instance.Register<IAccountService>(new AccountService());
         }
 
         /// <summary>

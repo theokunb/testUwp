@@ -5,6 +5,7 @@ namespace testUwp.Services.CurrencyConvert
 {
     public interface ICurrencyConvertService : IService
     {
-        Task<double> ConvertToAsync(double amount, string currencyCode, CancellationToken cancellationToken = default);
+        Task<double> ConvertFromRubAsync(double amount, string currencyCode, CancellationToken cancellationToken = default);
+        Task<double> ConvertToRubAsync(double amount, string currencyCode, CancellationToken cancellationToken = default);
     }
 }

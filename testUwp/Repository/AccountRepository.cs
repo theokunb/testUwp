@@ -39,5 +39,8 @@ namespace testUwp.Repository
 
         public async Task<Account> GetAsync(int accountId, CancellationToken cancellationToken = default) =>
             await _connection.Table<Account>().FirstOrDefaultAsync(element => element.Id == accountId);
+
+        public async Task<int> UpdateAsync(Account account, CancellationToken cancellationToken = default) =>
+            await _connection.UpdateAsync(account);
     }
 }
