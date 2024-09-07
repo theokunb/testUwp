@@ -1,8 +1,8 @@
 ﻿using SQLite;
-using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using testUwp.Core;
 using testUwp.Model;
 
 namespace testUwp.Repository
@@ -14,24 +14,17 @@ namespace testUwp.Repository
         public CurrencyRepository(string path)
         {
             _connection = new SQLiteAsyncConnection(path);
-
-            CreateCurrecies();
-        }
-
-        private async void CreateCurrecies()
-        {
-            await _connection.CreateTableAsync<Currency>();
-
-            await CreateAsync(CurrencyType.USD, "Доллар");
-            await CreateAsync(CurrencyType.EUR, "Евро");
-            await CreateAsync(CurrencyType.RUB, "Рубль");
+            _connection.CreateTableAsync<Currency>().Wait();
+            _ = new NotifyTaskCompletion<int>(CreateAsync(CurrencyType.RUB, "RUB"));
+            _ = new NotifyTaskCompletion<int>(CreateAsync(CurrencyType.USD, "USD"));
+            _ = new NotifyTaskCompletion<int>(CreateAsync(CurrencyType.EUR, "EUR"));
         }
 
         public async Task<int> CreateAsync(CurrencyType currencyType, string title, CancellationToken cancellationToken = default)
         {
             var existedCurrency = await _connection.Table<Currency>().FirstOrDefaultAsync(element => element.Type == currencyType);
 
-            if(existedCurrency != null)
+            if (existedCurrency != null)
             {
                 return 1;
             }
@@ -59,7 +52,7 @@ namespace testUwp.Repository
         {
             var currency = await _connection.Table<Currency>().Where(element => element.Type == currencyType).FirstOrDefaultAsync();
 
-            if(currency != null)
+            if (currency != null)
             {
                 return await _connection.DeleteAsync(currency);
             }
