@@ -52,13 +52,13 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0"
-                    Style="{StaticResource ButtonStyle}"
+                    Style="{StaticResource ButtonMainStyle}"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Content="Записать"
                     Command="{Binding CommandNavigateTransaction}"/>
             <Button Grid.Column="1"
-                    Style="{StaticResource ButtonStyle}"
+                    Style="{StaticResource ButtonMainStyle}"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Content="История"

@@ -16,21 +16,19 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0"
                    Text="Операции"
                    Style="{StaticResource PageTitle}"/>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-
-            <StackPanel Grid.Column="0">
-                <TextBlock Text="Сумма операции"/>
-                <TextBox Text="{Binding OperationValueStr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+        <Grid Grid.Row="1"
+              Padding="40,10,0,0">
+            <StackPanel HorizontalAlignment="Left"
+                        Spacing="8">
+                <TextBlock Text="Сумма операции:"/>
+                <TextBox Style="{StaticResource TextInput}"
+                         Text="{Binding OperationValueStr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          Name="operationValue"
                          SelectionStart="{Binding SelectionText}"
                          SelectionLength="{Binding SelectionLenght}">
@@ -40,16 +38,19 @@
                         </core:EventTriggerBehavior>
                     </i:Interaction.Behaviors>
                 </TextBox>
-                <TextBlock Text="Тип операции"/>
+                <TextBlock Text="Тип операции"
+                           Margin="0,10,0,0"/>
                 <ComboBox ItemsSource="{Binding Operations}"
                           SelectedIndex="{Binding SelectedOperationType, Mode=TwoWay}">
                 </ComboBox>
             </StackPanel>
 
-            <StackPanel Grid.Column="1">
-                <TextBlock Text="Валюта"/>
+            <StackPanel HorizontalAlignment="Right">
+                <TextBlock Text="Валюта:"
+                           Margin="0,0,80,0"/>
                 <ComboBox SelectedIndex="{Binding SelectedCurrencyIndex, Mode=TwoWay}"
-                          ItemsSource="{Binding Currencies, Mode=TwoWay}">
+                          ItemsSource="{Binding Currencies, Mode=TwoWay}"
+                          Margin="15,10">
                 </ComboBox>
             </StackPanel>
         </Grid>
@@ -61,16 +62,16 @@
             <Button Grid.Column="0"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
-                    Margin="40,0"
                     Content="Записать"
                     Command="{Binding CommandWriteOperation}"
-                    IsEnabled="{Binding WriteButtonActive}"/>
+                    IsEnabled="{Binding WriteButtonActive}"
+                    Style="{StaticResource ButtonMainStyle}"/>
             <Button Grid.Column="1"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
-                    Margin="40,0"
                     Content="Отмена"
-                    Command="{Binding CommandNavigateBack}"/>
+                    Command="{Binding CommandNavigateBack}"
+                    Style="{StaticResource ButtonSecondStyle}"/>
         </Grid>
     </Grid>
 </Page>
