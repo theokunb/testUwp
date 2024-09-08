@@ -171,7 +171,9 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="accountPage.PNG" />
     <Content Include="Assets\arrowBack.png" />
+    <Content Include="historyPage.PNG" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -180,6 +182,7 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="transactionPage.PNG" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
