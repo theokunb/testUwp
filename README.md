@@ -11,3 +11,17 @@
 4. Отображение текущего счёта по выбранной валюте (конвертация по значениям из API).
 
 ### Пользовательский UI
+
+- Окно счет
+
+![Окно счет](https://github.com/theokunb/testUwp/blob/master/testUwp/accountPage.PNG)
+
+
+- Окно операции
+
+![Окно операции](https://github.com/theokunb/testUwp/blob/master/testUwp/transactionPage.PNG)
+
+
+- Окно истории
+
+![Окно истории](https://github.com/theokunb/testUwp/blob/master/testUwp/historyPage.PNG)
