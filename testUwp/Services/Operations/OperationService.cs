@@ -17,7 +17,7 @@ namespace testUwp.Services.Operations
                 new OperationType()
                 {
                     TransactionType = TransactionType.Deposit,
-                    Description = "Пополнение"
+                    Description = "Зачисление"
                 },
                 new OperationType()
                 {

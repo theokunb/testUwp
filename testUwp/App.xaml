@@ -11,7 +11,7 @@
                 <Setter Property="Margin" Value="20,5,0,5"/>
             </Style>
 
-            <Style x:Key="ButtonStyle"
+            <Style x:Key="ButtonMainStyle"
                    TargetType="Button">
                 <Setter Property="Background" Value="#005DBD"/>
                 <Setter Property="Foreground" Value="#FFFFFF"/>
@@ -19,6 +19,22 @@
                 <Setter Property="CornerRadius" Value="8"/>
                 <Setter Property="Margin" Value="25, 10"/>
                 <Setter Property="MinHeight" Value="50"/>
+            </Style>
+
+            <Style x:Key="ButtonSecondStyle"
+                   TargetType="Button"
+                   BasedOn="{StaticResource ButtonMainStyle}">
+                <Setter Property="Background" Value="#FFFFFF"/>
+                <Setter Property="Foreground" Value="#000000"/>
+                <Setter Property="BorderBrush" Value="#CFCFCF"/>
+                <Setter Property="BorderThickness" Value="1"/>
+            </Style>
+
+            <Style x:Key="TextInput"
+                   TargetType="TextBox">
+                <Setter Property="CornerRadius" Value="7"/>
+                <Setter Property="BorderBrush" Value="#000000"/>
+                <Setter Property="BorderThickness" Value="3"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>
