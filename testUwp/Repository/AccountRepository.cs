@@ -30,7 +30,7 @@ namespace testUwp.Repository
             account = new Account()
             {
                 Currency = currencyType,
-                Amount = 1412420.45343
+                Amount = 0
             };
 
             await _connection.InsertAsync(account);
