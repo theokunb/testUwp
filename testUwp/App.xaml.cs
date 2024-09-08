@@ -4,8 +4,10 @@ using testUwp.Core;
 using testUwp.Repository;
 using testUwp.Services.Account;
 using testUwp.Services.CurrencyConvert;
+using testUwp.Services.Help;
 using testUwp.Services.Operations;
 using testUwp.Services.Quotes;
+using testUwp.Services.Transaction;
 using testUwp.View;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -37,6 +39,7 @@ namespace testUwp
             ServiceLocator.Instance.Register<ICurrencyConvertService>(new CurrencyConvertService());
             ServiceLocator.Instance.Register<IOperationService>(new OperationService());
             ServiceLocator.Instance.Register<IAccountService>(new AccountService());
+            ServiceLocator.Instance.Register<ITransactionService>(new TransactionService());
         }
 
         /// <summary>

@@ -27,6 +27,9 @@ namespace testUwp.Services.Operations
             };
         }
 
+        public async Task<OperationType> GetOperation(TransactionType transactionType, CancellationToken cancellationToken = default) =>
+            _operations.FirstOrDefault(element => element.TransactionType == transactionType);
+
         public async Task<OperationType> GetOperationByDescriptionAsync(string description, CancellationToken cancellationToken = default) =>
             _operations.FirstOrDefault(element => element.Description == description);
 
