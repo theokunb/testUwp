@@ -32,7 +32,8 @@ namespace testUwp.Repository
             var createCurrency = new Currency()
             {
                 Type = currencyType,
-                Title = title
+                Title = title,
+                CurrencyFormat = currencyType.GetFromat()
             };
 
             return await _connection.InsertAsync(createCurrency);

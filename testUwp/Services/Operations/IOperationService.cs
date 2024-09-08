@@ -9,5 +9,6 @@ namespace testUwp.Services.Operations
     {
         Task<IEnumerable<OperationType>> GetOperationsAsync(CancellationToken cancellationToken = default);
         Task<OperationType> GetOperationByDescriptionAsync(string description, CancellationToken cancellationToken = default);
+        Task<OperationType> GetOperation(TransactionType transactionType, CancellationToken cancellationToken = default);
     }
 }

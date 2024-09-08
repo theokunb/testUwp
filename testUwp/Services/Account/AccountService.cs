@@ -29,7 +29,7 @@ namespace testUwp.Services.Account
             var account = await _accountRepository.GetAsync(accountId);
             var currency = await _currencyRepository.GetByCodeAsync(currecyCode, cancellationToken);
 
-            var transaction = new Transaction
+            var transaction = new Model.Transaction
             {
                 Amount = amount,
                 CreatedOn = DateTime.Now,
