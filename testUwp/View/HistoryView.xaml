@@ -24,20 +24,28 @@
                    Text="История"
                    Style="{StaticResource PageTitle}"/>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1"
+              Padding="0,15,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="60"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
             <Button Grid.Column="0"
-                    Width="40"
-                    Height="25"
+                    Width="42"
+                    Height="32"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Center"
-                    Command="{Binding CommandNavigateBack}"/>
+                    Background="Transparent"
+                    Command="{Binding CommandNavigateBack}">
+                <Image Source="/Assets/arrowBack.png"
+                       Stretch="Fill"
+                       VerticalAlignment="Stretch"
+                       HorizontalAlignment="Stretch"/>
+            </Button>
 
-            <ScrollViewer Grid.Column="1">
+            <ScrollViewer Grid.Column="1"
+                          Padding="40,0,0,0">
                 <controls:DataGrid ItemsSource="{Binding Transactions}"
                                    AutoGenerateColumns="True">
                     <i:Interaction.Behaviors>
